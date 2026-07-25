@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"DistribuidoraHorseDesignSystem_1d44b3","components":[{"name":"Eyebrow","sourcePath":"components/brand/Eyebrow.jsx"},{"name":"Logo","sourcePath":"components/brand/Logo.jsx"},{"name":"ProductCard","sourcePath":"components/commerce/ProductCard.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Stat","sourcePath":"components/core/Stat.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"}],"sourceHashes":{"components/brand/Eyebrow.jsx":"fc5668cc71e5","components/brand/Logo.jsx":"16a71ad59650","components/commerce/ProductCard.jsx":"4c5769280870","components/core/Badge.jsx":"f7443ba10933","components/core/Button.jsx":"4bb17e810897","components/core/Card.jsx":"0787977b476f","components/core/IconButton.jsx":"bfad6797a853","components/core/Stat.jsx":"c71fcce505c3","components/forms/Checkbox.jsx":"0a0f41f6c0fb","components/forms/Input.jsx":"aaa9999a5f93","components/forms/Select.jsx":"5751fe508861","import_github/about-screen.js":"2be867092e5c","import_github/catalog-screen.js":"d806c59b2d94","import_github/contact-screen.js":"2042ecd80ffb","import_github/footer.js":"365c967df808","import_github/header.js":"8f2f941a38ba","import_github/home-screen.js":"9c22db9c5ec6","import_github/products.js":"f358f5a6e6fe","import_github/shared.js":"7fd97c310fa1","ui_kits/site/AboutScreen.jsx":"719dd56bedad","ui_kits/site/CatalogScreen.jsx":"d806c59b2d94","ui_kits/site/ContactScreen.jsx":"2042ecd80ffb","ui_kits/site/Footer.jsx":"0b282f16e645","ui_kits/site/Header.jsx":"f0549f9a84bc","ui_kits/site/HomeScreen.jsx":"d0ce3dbaeb23","ui_kits/site/products.js":"4a01bff0c84e"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":4,"namespace":"DistribuidoraHorseDesignSystem_1d44b3","components":[{"name":"Eyebrow","sourcePath":"components/brand/Eyebrow.jsx"},{"name":"Logo","sourcePath":"components/brand/Logo.jsx"},{"name":"ProductCard","sourcePath":"components/commerce/ProductCard.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Stat","sourcePath":"components/core/Stat.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"}],"sourceHashes":{"components/brand/Eyebrow.jsx":"fc5668cc71e5","components/brand/Logo.jsx":"16a71ad59650","components/commerce/ProductCard.jsx":"4c5769280870","components/core/Badge.jsx":"f7443ba10933","components/core/Button.jsx":"4bb17e810897","components/core/Card.jsx":"0787977b476f","components/core/IconButton.jsx":"bfad6797a853","components/core/Stat.jsx":"c71fcce505c3","components/forms/Checkbox.jsx":"0a0f41f6c0fb","components/forms/Input.jsx":"aaa9999a5f93","components/forms/Select.jsx":"5751fe508861","import_github/about-screen.js":"2be867092e5c","import_github/catalog-screen.js":"d806c59b2d94","import_github/contact-screen.js":"2042ecd80ffb","import_github/footer.js":"2611b63baf40","import_github/header.js":"8548e5486043","import_github/home-screen.js":"f3ec3843ef8a","import_github/products.js":"f358f5a6e6fe","import_github/shared.js":"ddf4f71d8c59","ui_kits/site/AboutScreen.jsx":"719dd56bedad","ui_kits/site/CatalogScreen.jsx":"d806c59b2d94","ui_kits/site/ContactScreen.jsx":"2042ecd80ffb","ui_kits/site/Footer.jsx":"c64daa3c13c5","ui_kits/site/Header.jsx":"cbecc6d8aa0e","ui_kits/site/HomeScreen.jsx":"dc106db34d24","ui_kits/site/products.js":"4a01bff0c84e"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -1605,16 +1605,26 @@ function Footer({
 }) {
   const isMobile = useIsMobile();
   const nav = r => () => setRoute && setRoute(r);
+  const irMarcas = () => {
+    setRoute && setRoute('home');
+    setTimeout(() => {
+      const el = document.getElementById('marcas');
+      if (el) window.scrollTo({
+        top: el.offsetTop - 100,
+        behavior: 'smooth'
+      });
+    }, 120);
+  };
   const full = () => {
     window.location.href = 'catalogo-completo.html';
   };
-  const cols = [['Empresa', [['A Horse', nav('about')], ['Missão e valores', nav('about')], ['Trabalhe conosco', nav('contact')]]], ['Catálogo', [['Saúde', full], ['Nutrição', full], ['Performance', full], ['Higiene', full]]], ['Atendimento', [['Fale conosco', nav('contact')], ['Seja um cliente', nav('contact')], ['Marcas parceiras', nav('home')]]]];
+  const cols = [['Empresa', [['A Horse', nav('about')], ['Missão e valores', nav('about')], ['Trabalhe conosco', nav('contact')]]], ['Catálogo', [['Saúde', full], ['Nutrição', full], ['Performance', full], ['Higiene', full]]], ['Atendimento', [['Fale conosco', nav('contact')], ['Seja um cliente', nav('contact')], ['Marcas parceiras', irMarcas]]]];
   const social = [['Instagram', 'https://www.instagram.com/distribuidorahorse', '@distribuidorahorse'], ['MessageCircle', 'https://wa.me/5531998739510', 'WhatsApp (31) 99873-9510'], ['Phone', 'tel:+553134113034', 'Telefone (31) 3411-3034'], ['Mail', 'mailto:vendas@horsesaudeanimal.com.br', 'E-mail']];
   return /*#__PURE__*/React.createElement("footer", {
     style: {
       background: 'var(--ink-700)',
       color: 'var(--paper-200)',
-      padding: 'var(--space-8) var(--gutter) var(--space-6)'
+      padding: 'var(--space-7) var(--gutter) var(--space-5)'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1634,7 +1644,7 @@ function Footer({
   }, /*#__PURE__*/React.createElement(Logo, {
     variant: "mark",
     tone: "light",
-    height: 56,
+    height: 72,
     base: "./"
   }), /*#__PURE__*/React.createElement("p", {
     style: {
@@ -1715,8 +1725,8 @@ function Footer({
     }
   }, label))))))), /*#__PURE__*/React.createElement("div", {
     style: {
-      marginTop: 44,
-      paddingTop: 22,
+      marginTop: 36,
+      paddingTop: 20,
       borderTop: '1px solid rgba(255,255,255,0.12)',
       display: 'flex',
       justifyContent: 'space-between',
@@ -1770,7 +1780,7 @@ function Header({
     style: {
       maxWidth: 'var(--container)',
       margin: '0 auto',
-      height: isMobile ? 64 : 76,
+      height: isMobile ? 72 : 92,
       padding: '0 var(--gutter)',
       display: 'flex',
       alignItems: 'center',
@@ -1785,7 +1795,7 @@ function Header({
   }, /*#__PURE__*/React.createElement(Logo, {
     variant: "full",
     tone: "dark",
-    height: isMobile ? 38 : 44,
+    height: isMobile ? 48 : 62,
     base: "./"
   })), !isMobile && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("nav", {
     style: {
@@ -1907,18 +1917,20 @@ function Hero({
     alt: "",
     style: {
       position: 'absolute',
-      right: isMobile ? -120 : -60,
+      right: isMobile ? '-18%' : '4%',
       top: '50%',
       transform: 'translateY(-50%)',
-      height: isMobile ? 300 : 460,
-      opacity: 0.06,
+      height: isMobile ? 240 : 400,
+      maxWidth: '46%',
+      objectFit: 'contain',
+      opacity: 0.07,
       pointerEvents: 'none'
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       maxWidth: 'var(--container)',
       margin: '0 auto',
-      padding: isMobile ? 'var(--space-7) var(--gutter)' : 'var(--space-9) var(--gutter)',
+      padding: isMobile ? 'var(--space-7) var(--gutter)' : 'var(--space-8) var(--gutter)',
       position: 'relative'
     }
   }, /*#__PURE__*/React.createElement("div", {
@@ -1972,7 +1984,7 @@ function Hero({
     style: {
       display: 'flex',
       gap: isMobile ? 28 : 52,
-      marginTop: isMobile ? 40 : 52,
+      marginTop: isMobile ? 32 : 44,
       flexWrap: 'wrap'
     }
   }, /*#__PURE__*/React.createElement(Stat, {
@@ -2006,7 +2018,7 @@ function Pillars() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       textAlign: 'center',
-      marginBottom: 44
+      marginBottom: 36
     }
   }, /*#__PURE__*/React.createElement(Eyebrow, {
     tone: "accent",
@@ -2248,7 +2260,8 @@ function Brands() {
   };
   return /*#__PURE__*/React.createElement(Section, {
     bg: "var(--color-bg)",
-    pad: "var(--space-7) var(--gutter)"
+    id: "marcas",
+    pad: "var(--space-6) var(--gutter)"
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       textAlign: 'center',
@@ -2449,11 +2462,13 @@ function Section({
   children,
   bg = 'transparent',
   pad,
+  id,
   style = {}
 }) {
   const isMobile = useIsMobile();
-  const p = pad || (isMobile ? 'var(--space-7) var(--gutter)' : 'var(--space-9) var(--gutter)');
+  const p = pad || (isMobile ? 'var(--space-6) var(--gutter)' : 'var(--space-8) var(--gutter)');
   return /*#__PURE__*/React.createElement("section", {
+    id: id,
     style: {
       background: bg,
       padding: p,
@@ -3203,16 +3218,26 @@ function Footer({
 }) {
   const isMobile = useIsMobile();
   const nav = r => () => setRoute && setRoute(r);
+  const irMarcas = () => {
+    setRoute && setRoute('home');
+    setTimeout(() => {
+      const el = document.getElementById('marcas');
+      if (el) window.scrollTo({
+        top: el.offsetTop - 100,
+        behavior: 'smooth'
+      });
+    }, 120);
+  };
   const full = () => {
     window.location.href = 'catalogo-completo.html';
   };
-  const cols = [['Empresa', [['A Horse', nav('about')], ['Missão e valores', nav('about')], ['Trabalhe conosco', nav('contact')]]], ['Catálogo', [['Saúde', full], ['Nutrição', full], ['Performance', full], ['Higiene', full]]], ['Atendimento', [['Fale conosco', nav('contact')], ['Seja um cliente', nav('contact')], ['Marcas parceiras', nav('home')]]]];
+  const cols = [['Empresa', [['A Horse', nav('about')], ['Missão e valores', nav('about')], ['Trabalhe conosco', nav('contact')]]], ['Catálogo', [['Saúde', full], ['Nutrição', full], ['Performance', full], ['Higiene', full]]], ['Atendimento', [['Fale conosco', nav('contact')], ['Seja um cliente', nav('contact')], ['Marcas parceiras', irMarcas]]]];
   const social = [['Instagram', 'https://www.instagram.com/distribuidorahorse', '@distribuidorahorse'], ['MessageCircle', 'https://wa.me/5531998739510', 'WhatsApp (31) 99873-9510'], ['Phone', 'tel:+553134113034', 'Telefone (31) 3411-3034'], ['Mail', 'mailto:vendas@horsesaudeanimal.com.br', 'E-mail']];
   return /*#__PURE__*/React.createElement("footer", {
     style: {
       background: 'var(--ink-700)',
       color: 'var(--paper-200)',
-      padding: 'var(--space-8) var(--gutter) var(--space-6)'
+      padding: 'var(--space-7) var(--gutter) var(--space-5)'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -3232,7 +3257,7 @@ function Footer({
   }, /*#__PURE__*/React.createElement(Logo, {
     variant: "mark",
     tone: "light",
-    height: 56,
+    height: 72,
     base: "../../"
   }), /*#__PURE__*/React.createElement("p", {
     style: {
@@ -3313,8 +3338,8 @@ function Footer({
     }
   }, label))))))), /*#__PURE__*/React.createElement("div", {
     style: {
-      marginTop: 44,
-      paddingTop: 22,
+      marginTop: 36,
+      paddingTop: 20,
       borderTop: '1px solid rgba(255,255,255,0.12)',
       display: 'flex',
       justifyContent: 'space-between',
@@ -3368,7 +3393,7 @@ function Header({
     style: {
       maxWidth: 'var(--container)',
       margin: '0 auto',
-      height: isMobile ? 64 : 76,
+      height: isMobile ? 72 : 92,
       padding: '0 var(--gutter)',
       display: 'flex',
       alignItems: 'center',
@@ -3383,7 +3408,7 @@ function Header({
   }, /*#__PURE__*/React.createElement(Logo, {
     variant: "full",
     tone: "dark",
-    height: isMobile ? 38 : 44,
+    height: isMobile ? 48 : 62,
     base: "../../"
   })), !isMobile && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("nav", {
     style: {
@@ -3505,18 +3530,20 @@ function Hero({
     alt: "",
     style: {
       position: 'absolute',
-      right: isMobile ? -120 : -60,
+      right: isMobile ? '-18%' : '4%',
       top: '50%',
       transform: 'translateY(-50%)',
-      height: isMobile ? 300 : 460,
-      opacity: 0.06,
+      height: isMobile ? 240 : 400,
+      maxWidth: '46%',
+      objectFit: 'contain',
+      opacity: 0.07,
       pointerEvents: 'none'
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       maxWidth: 'var(--container)',
       margin: '0 auto',
-      padding: isMobile ? 'var(--space-7) var(--gutter)' : 'var(--space-9) var(--gutter)',
+      padding: isMobile ? 'var(--space-7) var(--gutter)' : 'var(--space-8) var(--gutter)',
       position: 'relative'
     }
   }, /*#__PURE__*/React.createElement("div", {
@@ -3570,7 +3597,7 @@ function Hero({
     style: {
       display: 'flex',
       gap: isMobile ? 28 : 52,
-      marginTop: isMobile ? 40 : 52,
+      marginTop: isMobile ? 32 : 44,
       flexWrap: 'wrap'
     }
   }, /*#__PURE__*/React.createElement(Stat, {
@@ -3604,7 +3631,7 @@ function Pillars() {
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       textAlign: 'center',
-      marginBottom: 44
+      marginBottom: 36
     }
   }, /*#__PURE__*/React.createElement(Eyebrow, {
     tone: "accent",
@@ -3846,7 +3873,8 @@ function Brands() {
   };
   return /*#__PURE__*/React.createElement(Section, {
     bg: "var(--color-bg)",
-    pad: "var(--space-7) var(--gutter)"
+    id: "marcas",
+    pad: "var(--space-6) var(--gutter)"
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       textAlign: 'center',

@@ -29,11 +29,11 @@ function Icon({ name, size = 20, color = 'currentColor', strokeWidth = 1.75, sty
 }
 
 // Section shell with consistent gutters
-function Section({ children, bg = 'transparent', pad, style = {} }) {
+function Section({ children, bg = 'transparent', pad, id, style = {} }) {
   const isMobile = useIsMobile();
-  const p = pad || (isMobile ? 'var(--space-7) var(--gutter)' : 'var(--space-9) var(--gutter)');
+  const p = pad || (isMobile ? 'var(--space-6) var(--gutter)' : 'var(--space-8) var(--gutter)');
   return (
-    <section style={{ background: bg, padding: p, ...style }}>
+    <section id={id} style={{ background: bg, padding: p, ...style }}>
       <div style={{ maxWidth: 'var(--container)', margin: '0 auto' }}>{children}</div>
     </section>
   );

@@ -58,8 +58,8 @@ function Catalogo() {
     <div>
       {/* top bar */}
       <header style={{ position:'sticky', top:0, zIndex:20, background:'rgba(250,248,243,0.9)', backdropFilter:'blur(10px)', borderBottom:'1px solid var(--border)' }}>
-        <div style={{ maxWidth:'var(--container)', margin:'0 auto', height:76, padding:'0 var(--gutter)', display:'flex', alignItems:'center', gap:20 }}>
-          <a href="index.html" style={{ display:'flex' }}><Logo variant="full" tone="dark" height={44} base="./" /></a>
+        <div style={{ maxWidth:'var(--container)', margin:'0 auto', height:92, padding:'0 var(--gutter)', display:'flex', alignItems:'center', gap:20 }}>
+          <a href="index.html" style={{ display:'flex' }}><Logo variant="full" tone="dark" height={62} base="./" /></a>
           <a href="index.html" style={{ marginLeft:'auto', display:'inline-flex', alignItems:'center', gap:8, fontFamily:'var(--font-sans)', fontSize:14, fontWeight:600, color:'var(--text-secondary)' }}><Icon name="ArrowLeft" size={16} /> Voltar ao site</a>
         </div>
       </header>
@@ -74,7 +74,7 @@ function Catalogo() {
       </section>
 
       {/* filters */}
-      <div style={{ position:'sticky', top:76, zIndex:15, background:'var(--color-bg)', borderBottom:'1px solid var(--border)' }}>
+      <div style={{ position:'sticky', top:92, zIndex:15, background:'var(--color-bg)', borderBottom:'1px solid var(--border)' }}>
         <div style={{ maxWidth:'var(--container)', margin:'0 auto', padding:'16px var(--gutter)', display:'flex', alignItems:'center', gap:16, flexWrap:'wrap' }}>
           <div style={{ width:280, maxWidth:'100%' }}><Input placeholder="Buscar por nome, marca ou uso" iconLeft={<Icon name="Search" size={18} />} value={q} onChange={e => setQ(e.target.value)} /></div>
           <div style={{ display:'flex', gap:8, flexWrap:'wrap', marginLeft:'auto' }}>

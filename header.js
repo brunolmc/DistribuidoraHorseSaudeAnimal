@@ -16,11 +16,11 @@ function Header({ route, setRoute }) {
       backdropFilter: 'blur(10px)', borderBottom: '1px solid var(--border)',
     }}>
       <div style={{
-        maxWidth: 'var(--container)', margin: '0 auto', height: isMobile ? 64 : 76, padding: '0 var(--gutter)',
+        maxWidth: 'var(--container)', margin: '0 auto', height: isMobile ? 72 : 92, padding: '0 var(--gutter)',
         display: 'flex', alignItems: 'center', gap: 28,
       }}>
         <a onClick={() => go('home')} style={{ cursor: 'pointer', display: 'flex' }}>
-          <Logo variant="full" tone="dark" height={isMobile ? 38 : 44} base="./" />
+          <Logo variant="full" tone="dark" height={isMobile ? 48 : 62} base="./" />
         </a>
         {!isMobile && (
           <React.Fragment>

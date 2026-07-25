@@ -5,8 +5,8 @@ function Hero({ setRoute }) {
   return (
     <section style={{ background: 'var(--ink-700)', color: 'var(--paper-50)', position: 'relative', overflow: 'hidden' }}>
       {/* watermark emblem */}
-      <img src="./assets/mark-horse-light.png" alt="" style={{ position: 'absolute', right: isMobile ? -120 : -60, top: '50%', transform: 'translateY(-50%)', height: isMobile ? 300 : 460, opacity: 0.06, pointerEvents: 'none' }} />
-      <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: isMobile ? 'var(--space-7) var(--gutter)' : 'var(--space-9) var(--gutter)', position: 'relative' }}>
+      <img src="./assets/mark-horse-light.png" alt="" style={{ position: 'absolute', right: isMobile ? '-18%' : '4%', top: '50%', transform: 'translateY(-50%)', height: isMobile ? 240 : 400, maxWidth: '46%', objectFit: 'contain', opacity: 0.07, pointerEvents: 'none' }} />
+      <div style={{ maxWidth: 'var(--container)', margin: '0 auto', padding: isMobile ? 'var(--space-7) var(--gutter)' : 'var(--space-8) var(--gutter)', position: 'relative' }}>
         <div style={{ maxWidth: 680 }}>
           <Eyebrow tone="warm">Distribuidora de produtos veterinários · desde 2016</Eyebrow>
           <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: isMobile ? 'var(--text-3xl)' : 'var(--text-5xl)', lineHeight: 1.05, letterSpacing: '-0.01em', fontWeight: 600, margin: '20px 0 0' }}>
@@ -19,7 +19,7 @@ function Hero({ setRoute }) {
             <Button variant="accent" size="lg" iconRight={<Icon name="ArrowRight" size={18} />} onClick={() => setRoute('catalog')}>Ver catálogo</Button>
             <Button variant="outline" size="lg" style={{ color: 'var(--paper-50)', borderColor: 'rgba(255,255,255,0.28)' }} onClick={() => setRoute('contact')}>Seja um cliente</Button>
           </div>
-          <div style={{ display: 'flex', gap: isMobile ? 28 : 52, marginTop: isMobile ? 40 : 52, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: isMobile ? 28 : 52, marginTop: isMobile ? 32 : 44, flexWrap: 'wrap' }}>
             <Stat value="+40" label="Marcas parceiras" tone="ink" style={{ '--text-primary': 'var(--paper-50)' }} />
             <Stat value="2016" label="No mercado" tone="ink" style={{ '--text-primary': 'var(--paper-50)' }} />
             <Stat value="MG" label="Base em BH" tone="ink" style={{ '--text-primary': 'var(--paper-50)' }} />
@@ -41,7 +41,7 @@ function Pillars() {
   const isMobile = useIsMobile();
   return (
     <Section bg="var(--color-bg)">
-      <div style={{ textAlign: 'center', marginBottom: 44 }}>
+      <div style={{ textAlign: 'center', marginBottom: 36 }}>
         <Eyebrow tone="accent" style={{ justifyContent: 'center' }}>Nossos pilares</Eyebrow>
         <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-3xl)', fontWeight: 600, margin: '16px 0 0', color: 'var(--text-primary)' }}>Mais que produtos, uma parceria técnica</h2>
       </div>
@@ -134,7 +134,7 @@ function Brands() {
   ];
   const abrir = (marca) => { window.location.href = 'catalogo-completo.html?marca=' + encodeURIComponent(marca); };
   return (
-    <Section bg="var(--color-bg)" pad="var(--space-7) var(--gutter)">
+    <Section bg="var(--color-bg)" id="marcas" pad="var(--space-6) var(--gutter)">
       <div style={{ textAlign: 'center', fontFamily: 'var(--font-display)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 26 }}>Marcas que distribuímos</div>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 40, flexWrap: 'wrap' }}>
         {names.map(([marca, label]) => (
