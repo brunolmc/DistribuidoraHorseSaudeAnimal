@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Catálogo completo | Distribuidora Horse</title>
+<link rel="stylesheet" href="./styles.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<script src="./_ds_bundle.js"></script>
+<script src="products.js"></script>
+<style>*{box-sizing:border-box}html,body{margin:0}body{background:var(--color-bg);font-family:var(--font-sans);color:var(--text-primary)}a{color:var(--accent);text-decoration:none}a:hover{color:var(--accent-strong)}</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Logo, Button, Badge, Input, ProductCard, Eyebrow } = window.DistribuidoraHorseDesignSystem_1d44b3;
+const { useState, useMemo } = React;
+function useIsMobile(bp = 768) {
+  const [m, setM] = useState(typeof window !== 'undefined' ? window.innerWidth <= bp : false);
+  React.useEffect(() => { const on = () => setM(window.innerWidth <= bp); on(); window.addEventListener('resize', on); return () => window.removeEventListener('resize', on); }, [bp]);
+  return m;
+}
+
+function Icon({ name, size = 20 }) {
+  const ref = React.useRef();
+  React.useEffect(() => { if (ref.current && window.lucide.icons[name]) { ref.current.innerHTML=''; const el = window.lucide.createElement(window.lucide.icons[name]); el.setAttribute('width',size); el.setAttribute('height',size); ref.current.appendChild(el); } }, [name,size]);
+  return <span ref={ref} style={{ display:'inline-flex' }} />;
+}
+
+const CATS = ['Todos', 'Saúde', 'Nutrição', 'Performance', 'Higiene', 'Pesca'];
+const ALL = window.HORSE_PRODUCTS || [];
+const MARCAS = [...new Set(ALL.map(p => p.marca))];
+
+function Catalogo() {
+  const isMobile = useIsMobile();
+  const [q, setQ] = useState('');
+  const [cat, setCat] = useState('Todos');
+
+  const filtered = useMemo(() => {
+    const t = q.trim().toLowerCase();
+    return ALL.filter(p =>
+      (cat === 'Todos' || p.category === cat) &&
+      (!t || p.name.toLowerCase().includes(t) || p.marca.toLowerCase().includes(t) || (p.desc||'').toLowerCase().includes(t))
+    );
+  }, [q, cat]);
+
+  const byMarca = useMemo(() => MARCAS.map(m => [m, filtered.filter(p => p.marca === m)]).filter(([,l]) => l.length), [filtered]);
+
+  return (
+    <div>
+      {/* top bar */}
+      <header style={{ position:'sticky', top:0, zIndex:20, background:'rgba(250,248,243,0.9)', backdropFilter:'blur(10px)', borderBottom:'1px solid var(--border)' }}>
+        <div style={{ maxWidth:'var(--container)', margin:'0 auto', height:76, padding:'0 var(--gutter)', display:'flex', alignItems:'center', gap:20 }}>
+          <a href="index.html" style={{ display:'flex' }}><Logo variant="full" tone="dark" height={44} base="./" /></a>
+          <a href="index.html" style={{ marginLeft:'auto', display:'inline-flex', alignItems:'center', gap:8, fontFamily:'var(--font-sans)', fontSize:14, fontWeight:600, color:'var(--text-secondary)' }}><Icon name="ArrowLeft" size={16} /> Voltar ao site</a>
+        </div>
+      </header>
+
+      {/* hero band */}
+      <section style={{ background:'var(--ink-700)', color:'var(--paper-50)' }}>
+        <div style={{ maxWidth:'var(--container)', margin:'0 auto', padding:'var(--space-8) var(--gutter)' }}>
+          <Eyebrow tone="warm">Catálogo completo</Eyebrow>
+          <h1 style={{ fontFamily:'var(--font-serif)', fontSize: isMobile ? 'var(--text-3xl)' : 'var(--text-4xl)', fontWeight:600, lineHeight:1.05, margin:'16px 0 0' }}>Todos os produtos</h1>
+          <p style={{ fontFamily:'var(--font-sans)', fontSize:'var(--text-md)', color:'var(--ink-300)', marginTop:14, maxWidth:540 }}>Portfólio completo de saúde, nutrição, performance e higiene equina. Precisa de indicação técnica? Nossa equipe orienta a escolha.</p>
+        </div>
+      </section>
+
+      {/* filters */}
+      <div style={{ position:'sticky', top:76, zIndex:15, background:'var(--color-bg)', borderBottom:'1px solid var(--border)' }}>
+        <div style={{ maxWidth:'var(--container)', margin:'0 auto', padding:'16px var(--gutter)', display:'flex', alignItems:'center', gap:16, flexWrap:'wrap' }}>
+          <div style={{ width:300, maxWidth:'100%' }}><Input placeholder="Buscar por nome, marca ou uso" iconLeft={<Icon name="Search" size={18} />} value={q} onChange={e => setQ(e.target.value)} /></div>
+          <div style={{ display:'flex', gap:8, flexWrap:'wrap', marginLeft:'auto' }}>
+            {CATS.map(c => (
+              <button key={c} onClick={() => setCat(c)} style={{ cursor:'pointer', padding:'8px 16px', borderRadius:'var(--radius-pill)', fontFamily:'var(--font-sans)', fontSize:13, fontWeight:600, border:'1px solid ' + (cat===c ? 'var(--accent)' : 'var(--border-strong)'), background: cat===c ? 'var(--accent)' : 'var(--color-surface)', color: cat===c ? 'var(--paper-0)' : 'var(--text-secondary)' }}>{c}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* results */}
+      <div style={{ maxWidth:'var(--container)', margin:'0 auto', padding:'var(--space-7) var(--gutter) var(--space-9)' }}>
+        <div style={{ fontFamily:'var(--font-sans)', fontSize:14, color:'var(--text-muted)', marginBottom:24 }}>{filtered.length} produto{filtered.length!==1?'s':''}{cat!=='Todos' ? ' · ' + cat : ''}{q ? ' · "' + q + '"' : ''}</div>
+        {byMarca.length === 0 && <div style={{ padding:'60px 0', textAlign:'center', color:'var(--text-muted)', fontFamily:'var(--font-sans)' }}>Nenhum produto encontrado.</div>}
+        {byMarca.map(([marca, items]) => (
+          <section key={marca} style={{ marginBottom:'var(--space-8)' }}>
+            <div style={{ display:'flex', alignItems:'center', gap:14, marginBottom:22 }}>
+              <h2 style={{ fontFamily:'var(--font-display)', fontSize:'var(--text-lg)', letterSpacing:'0.12em', textTransform:'uppercase', fontWeight:600, color:'var(--text-primary)', margin:0 }}>{marca}</h2>
+              <span style={{ flex:1, height:1, background:'var(--border)' }} />
+              <Badge tone="neutral">{items.length}</Badge>
+            </div>
+            <div style={{ display:'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4,1fr)', gap: isMobile ? 12 : 20 }}>
+              {items.map(p => (
+                <ProductCard key={p.name} brand={p.marca} name={p.name} category={p.category} tone={p.tone} image={p.image}
+                  action={<div style={{ fontFamily:'var(--font-sans)', fontSize:12.5, color:'var(--text-muted)', display:'flex', alignItems:'center', gap:6 }}><Icon name="Package" size={14} /> {p.size}</div>} />
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      {/* footer cta */}
+      <section style={{ background:'var(--green-700)', color:'var(--paper-50)' }}>
+        <div style={{ maxWidth:'var(--container)', margin:'0 auto', padding:'var(--space-7) var(--gutter)', display:'flex', alignItems:'center', justifyContent:'space-between', gap:24, flexWrap:'wrap' }}>
+          <div>
+            <h2 style={{ fontFamily:'var(--font-serif)', fontSize:'var(--text-2xl)', fontWeight:600, margin:0 }}>Não encontrou o que procura?</h2>
+            <p style={{ fontFamily:'var(--font-sans)', fontSize:'var(--text-md)', color:'var(--green-200)', marginTop:10 }}>Trabalhamos com diversas indústrias. Fale com a nossa equipe técnica.</p>
+          </div>
+          <a href="index.html"><Button variant="warm" size="lg" iconRight={<Icon name="ArrowRight" size={18} />}>Falar com especialista</Button></a>
+        </div>
+      </section>
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<Catalogo/>);
+</script>
+</body>
+</html>

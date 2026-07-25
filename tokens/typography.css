@@ -1,0 +1,43 @@
+/* ============================================================
+   Distribuidora Horse — Typography tokens
+   Display caps (Cinzel) for brand/eyebrows, elegant serif
+   (Cormorant Garamond) for headings, humanist sans (Mulish)
+   for UI/body, signature script (Alex Brush) for accents.
+   ============================================================ */
+:root{
+  --font-display:'Cinzel',Georgia,serif;              /* Trajan-style caps */
+  --font-serif:'Cormorant Garamond',Georgia,serif;    /* headings */
+  --font-sans:'Mulish',-apple-system,'Segoe UI',sans-serif; /* body / UI */
+  --font-script:'Alex Brush','Segoe Script',cursive;  /* signature accent */
+
+  /* Type scale (rem) */
+  --text-xs:0.75rem;    /* 12 */
+  --text-sm:0.875rem;   /* 14 */
+  --text-base:1rem;     /* 16 */
+  --text-md:1.125rem;   /* 18 */
+  --text-lg:1.375rem;   /* 22 */
+  --text-xl:1.75rem;    /* 28 */
+  --text-2xl:2.25rem;   /* 36 */
+  --text-3xl:3rem;      /* 48 */
+  --text-4xl:4rem;      /* 64 */
+  --text-5xl:5.5rem;    /* 88 */
+
+  /* Weights */
+  --fw-light:300;      /* @kind font */
+  --fw-regular:400;    /* @kind font */
+  --fw-medium:500;     /* @kind font */
+  --fw-semibold:600;   /* @kind font */
+  --fw-bold:700;       /* @kind font */
+
+  /* Line heights */
+  --lh-tight:1.05;     /* @kind font */
+  --lh-snug:1.2;       /* @kind font */
+  --lh-normal:1.5;     /* @kind font */
+  --lh-relaxed:1.65;   /* @kind font */
+
+  /* Letter spacing */
+  --ls-caps:0.18em;    /* @kind font */
+  --ls-tight:-0.01em;  /* @kind font */
+  --ls-normal:0;       /* @kind font */
+  --ls-wide:0.04em;    /* @kind font */
+}

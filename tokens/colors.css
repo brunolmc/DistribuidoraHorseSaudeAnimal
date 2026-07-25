@@ -1,0 +1,89 @@
+/* ============================================================
+   Distribuidora Horse — Color tokens
+   Anchored on the logo charcoal (#35363A). Warm "paper/leather"
+   neutrals, a deep health green (Saúde) and a saddle amber
+   (Performance). Disciplined, premium veterinary palette.
+   ============================================================ */
+:root{
+  /* --- Ink (brand charcoal scale) --- */
+  --ink-900:#1C1D20;
+  --ink-800:#26272B;
+  --ink-700:#2C2D31;
+  --ink-600:#35363A;   /* brand charcoal, sampled from logo */
+  --ink-500:#4A4B50;
+  --ink-400:#6E6F75;
+  --ink-300:#9A9BA0;
+
+  /* --- Paper / warm neutrals --- */
+  --paper-0:#FFFFFF;
+  --paper-50:#FAF8F3;  /* page background */
+  --paper-100:#F3EFE7;
+  --paper-200:#E7E0D3; /* hairline borders, sand fills */
+  --paper-300:#D6CCB9;
+  --stone-600:#7C7568; /* warm muted text */
+  --stone-500:#948C7D;
+
+  /* --- Green — Saúde (health) --- */
+  --green-800:#1E3E30;
+  --green-700:#274E3D;
+  --green-600:#2E5A47; /* primary green accent */
+  --green-500:#3B7358;
+  --green-200:#BFD6C8;
+  --green-100:#E4EEE8;
+
+  /* --- Amber — Performance (leather / saddle) --- */
+  --amber-800:#7A461B;
+  --amber-700:#9A5B24;
+  --amber-600:#B8752F; /* warm accent */
+  --amber-500:#C89153;
+  --amber-200:#EAD3B0;
+  --amber-100:#F5EADA;
+
+  /* --- Semantic hues --- */
+  --red-600:#A6382F;
+  --red-100:#F3DEDA;
+  --blue-600:#2F5568;
+  --blue-100:#DCE7EC;
+
+  /* ============================================================
+     Semantic aliases — reference these in components
+     ============================================================ */
+  --color-bg:var(--paper-50);
+  --color-surface:var(--paper-0);
+  --color-surface-sunken:var(--paper-100);
+  --color-surface-inverse:var(--ink-700);
+
+  --text-primary:var(--ink-700);
+  --text-secondary:var(--ink-500);
+  --text-muted:var(--stone-600);
+  --text-inverse:var(--paper-50);
+  --text-on-brand:var(--paper-50);
+
+  --border:var(--paper-200);
+  --border-strong:var(--paper-300);
+  --border-focus:var(--green-600);
+
+  --brand:var(--ink-600);
+  --brand-strong:var(--ink-800);
+  --brand-contrast:var(--paper-50);
+
+  --accent:var(--green-600);
+  --accent-strong:var(--green-700);
+  --accent-soft:var(--green-100);
+  --accent-contrast:var(--paper-0);
+
+  --accent-warm:var(--amber-600);
+  --accent-warm-strong:var(--amber-700);
+  --accent-warm-soft:var(--amber-100);
+
+  --success:var(--green-600);
+  --success-soft:var(--green-100);
+  --warning:var(--amber-700);
+  --warning-soft:var(--amber-100);
+  --danger:var(--red-600);
+  --danger-soft:var(--red-100);
+  --info:var(--blue-600);
+  --info-soft:var(--blue-100);
+
+  --focus-ring:color-mix(in srgb,var(--green-600) 40%,transparent);
+}
