@@ -121,19 +121,30 @@ function Featured({ setRoute }) {
       </div>
       <div style={{ textAlign: 'center', marginTop: 40 }}>
         <Button variant="accent" size="lg" iconRight={<Icon name="ArrowRight" size={18} />} onClick={() => { window.location.href = 'catalogo-completo.html'; }}>Ver catálogo completo</Button>
-        <div style={{ marginTop: 12, fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--text-muted)' }}>Mais de 120 produtos · Syntec, Organnact, Calbos, Central Vet, Heel, Papa Mosca e Lambari</div>
+        <div style={{ marginTop: 12, fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--text-muted)' }}>Mais de 120 produtos · Syntec, Organnact, Calbos, Central Vet, Heel, J.A. Ambiental e Lambari</div>
       </div>
     </Section>
   );
 }
 
 function Brands() {
-  const names = ['SYNTEC', 'ORGANNACT', 'CALBOS', 'CENTRAL VET', 'PAPA MOSCA', 'HEEL', 'LAMBARI'];
+  const names = [
+    ['Syntec', 'SYNTEC'], ['Organnact', 'ORGANNACT'], ['Calbos', 'CALBOS'],
+    ['Central Vet', 'CENTRAL VET'], ['Heel', 'HEEL'], ['J.A. Ambiental', 'J.A. AMBIENTAL'], ['Lambari', 'LAMBARI'],
+  ];
+  const abrir = (marca) => { window.location.href = 'catalogo-completo.html?marca=' + encodeURIComponent(marca); };
   return (
     <Section bg="var(--color-bg)" pad="var(--space-7) var(--gutter)">
       <div style={{ textAlign: 'center', fontFamily: 'var(--font-display)', fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 26 }}>Marcas que distribuímos</div>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 48, flexWrap: 'wrap' }}>
-        {names.map((n) => <span key={n} style={{ fontFamily: 'var(--font-display)', fontSize: 20, letterSpacing: '0.08em', color: 'var(--ink-400)', opacity: 0.7 }}>{n}</span>)}
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 40, flexWrap: 'wrap' }}>
+        {names.map(([marca, label]) => (
+          <button key={marca} onClick={() => abrir(marca)} title={'Ver produtos ' + marca}
+            style={{ cursor: 'pointer', background: 'none', border: 'none', padding: '6px 4px', fontFamily: 'var(--font-display)', fontSize: 20, letterSpacing: '0.08em', color: 'var(--ink-400)', opacity: 0.7, transition: 'opacity var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.opacity = 1; e.currentTarget.style.color = 'var(--accent)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.opacity = 0.7; e.currentTarget.style.color = 'var(--ink-400)'; }}>
+            {label}
+          </button>
+        ))}
       </div>
     </Section>
   );

@@ -2,7 +2,7 @@ const { Button, Badge, Input, Select, Checkbox, ProductCard, Eyebrow } = window.
 
 const ALL_PRODUCTS = () => window.HORSE_PRODUCTS || [];
 const CATEGORIAS = ['Saúde', 'Nutrição', 'Performance', 'Higiene', 'Pesca'];
-const MARCAS_FILTRO = ['Syntec', 'Organnact', 'Calbos', 'Central Vet', 'Heel', 'Papa Mosca', 'Lambari'];
+const MARCAS_FILTRO = ['Syntec', 'Organnact', 'Calbos', 'Central Vet', 'Heel', 'J.A. Ambiental', 'Lambari'];
 
 function FilterGroup({ title, children }) {
   return (
@@ -104,7 +104,7 @@ function CatalogScreen() {
             <div style={{ marginTop: 32, padding: 'var(--space-6)', background: 'var(--color-surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
               <div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 'var(--text-lg)', fontWeight: 600, color: 'var(--text-primary)' }}>Quer ver o portfólio inteiro?</div>
-                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--text-secondary)', marginTop: 4 }}>Mais de 120 produtos de Syntec, Organnact, Calbos, Central Vet, Heel, Papa Mosca e Lambari.</div>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--text-secondary)', marginTop: 4 }}>Mais de 120 produtos de Syntec, Organnact, Calbos, Central Vet, Heel, J.A. Ambiental e Lambari.</div>
               </div>
               <Button variant="accent" iconRight={<Icon name="ArrowRight" size={16} />} onClick={goFull}>Ver catálogo completo</Button>
             </div>

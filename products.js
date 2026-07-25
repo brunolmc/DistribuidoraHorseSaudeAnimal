@@ -123,13 +123,13 @@
     P('Heel', 'Zeel', 'Saúde', '5 ampolas de 5 ml', 'Solução injetável indicada para bovinos, equinos, suínos, ovinos, caprinos, caninos e felinos.'),
 
     // ---------------- PAPA MOSCA / J.A. AMBIENTAL ----------------
-    P('Papa Mosca', 'Papa Mosca', 'Higiene', '6 L', 'Atrativo biológico que combate as moscas de forma eficaz e sustentável, sem venenos ou inseticidas.'),
-    P('Papa Mosca', 'Atrativo Natural Pet', 'Higiene', '2 L', 'Solução ecológica e definitiva contra as moscas.'),
-    P('Papa Mosca', 'Papa Insetos', 'Higiene', '500 ml', 'Composição Methomyl 0,066% + surfactantes; controle de insetos.'),
-    P('Papa Mosca', 'Armadilha de Tela', 'Higiene', 'unidade', 'Rede protetora e recipiente para captura de moscas.'),
-    P('Papa Mosca', 'Armadilha Biológica', 'Higiene', 'unidade', 'Armadilha montada: funil, cuba, tampa, aranha, trava borboleta e haste.'),
-    P('Papa Mosca', 'Ratoeira Injetável T-Rex', 'Higiene', 'unidade', 'Ratoeira injetada em polipropileno virgem, mola de alta pressão; resistente ao sol e chuva.', 'ratoeira-injetavel-t-rex'),
-    P('Papa Mosca', 'Porta Iscas para Ratos', 'Higiene', 'unidade', 'Porta-iscas em polipropileno virgem com 4 funções de captura; ferro de fixação e chave universal.'),
+    P('J.A. Ambiental', 'Papa Mosca', 'Higiene', '6 L', 'Atrativo biológico que combate as moscas de forma eficaz e sustentável, sem venenos ou inseticidas.'),
+    P('J.A. Ambiental', 'Atrativo Natural Pet', 'Higiene', '2 L', 'Solução ecológica e definitiva contra as moscas.'),
+    P('J.A. Ambiental', 'Papa Insetos', 'Higiene', '500 ml', 'Composição Methomyl 0,066% + surfactantes; controle de insetos.'),
+    P('J.A. Ambiental', 'Armadilha de Tela', 'Higiene', 'unidade', 'Rede protetora e recipiente para captura de moscas.'),
+    P('J.A. Ambiental', 'Armadilha Biológica', 'Higiene', 'unidade', 'Armadilha montada: funil, cuba, tampa, aranha, trava borboleta e haste.'),
+    P('J.A. Ambiental', 'Ratoeira Injetável T-Rex', 'Higiene', 'unidade', 'Ratoeira injetada em polipropileno virgem, mola de alta pressão; resistente ao sol e chuva.', 'ratoeira-injetavel-t-rex'),
+    P('J.A. Ambiental', 'Porta Iscas para Ratos', 'Higiene', 'unidade', 'Porta-iscas em polipropileno virgem com 4 funções de captura; ferro de fixação e chave universal.'),
 
     // ---------------- LAMBARI (massas prontas para pesca) ----------------
     P('Lambari', 'Massa Pacu Goiaba', 'Pesca', '100 g', 'Massa pronta para pesca de pacu, sabor goiaba.', 'massa-pacu-goiaba'),

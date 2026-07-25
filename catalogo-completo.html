@@ -38,14 +38,19 @@ function Catalogo() {
   const isMobile = useIsMobile();
   const [q, setQ] = useState('');
   const [cat, setCat] = useState('Todos');
+  const [marca, setMarca] = useState(() => {
+    const p = new URLSearchParams(window.location.search).get('marca');
+    return p && MARCAS.includes(p) ? p : 'Todas';
+  });
 
   const filtered = useMemo(() => {
     const t = q.trim().toLowerCase();
     return ALL.filter(p =>
       (cat === 'Todos' || p.category === cat) &&
+      (marca === 'Todas' || p.marca === marca) &&
       (!t || p.name.toLowerCase().includes(t) || p.marca.toLowerCase().includes(t) || (p.desc||'').toLowerCase().includes(t))
     );
-  }, [q, cat]);
+  }, [q, cat, marca]);
 
   const byMarca = useMemo(() => MARCAS.map(m => [m, filtered.filter(p => p.marca === m)]).filter(([,l]) => l.length), [filtered]);
 
@@ -71,19 +76,31 @@ function Catalogo() {
       {/* filters */}
       <div style={{ position:'sticky', top:76, zIndex:15, background:'var(--color-bg)', borderBottom:'1px solid var(--border)' }}>
         <div style={{ maxWidth:'var(--container)', margin:'0 auto', padding:'16px var(--gutter)', display:'flex', alignItems:'center', gap:16, flexWrap:'wrap' }}>
-          <div style={{ width:300, maxWidth:'100%' }}><Input placeholder="Buscar por nome, marca ou uso" iconLeft={<Icon name="Search" size={18} />} value={q} onChange={e => setQ(e.target.value)} /></div>
+          <div style={{ width:280, maxWidth:'100%' }}><Input placeholder="Buscar por nome, marca ou uso" iconLeft={<Icon name="Search" size={18} />} value={q} onChange={e => setQ(e.target.value)} /></div>
           <div style={{ display:'flex', gap:8, flexWrap:'wrap', marginLeft:'auto' }}>
             {CATS.map(c => (
               <button key={c} onClick={() => setCat(c)} style={{ cursor:'pointer', padding:'8px 16px', borderRadius:'var(--radius-pill)', fontFamily:'var(--font-sans)', fontSize:13, fontWeight:600, border:'1px solid ' + (cat===c ? 'var(--accent)' : 'var(--border-strong)'), background: cat===c ? 'var(--accent)' : 'var(--color-surface)', color: cat===c ? 'var(--paper-0)' : 'var(--text-secondary)' }}>{c}</button>
             ))}
           </div>
         </div>
+        <div style={{ maxWidth:'var(--container)', margin:'0 auto', padding:'0 var(--gutter) 16px', display:'flex', alignItems:'center', gap:8, flexWrap:'wrap' }}>
+          <span style={{ fontFamily:'var(--font-display)', fontSize:10, letterSpacing:'0.16em', textTransform:'uppercase', color:'var(--text-muted)', marginRight:4 }}>Marca</span>
+          {['Todas'].concat(MARCAS).map(m => (
+            <button key={m} onClick={() => setMarca(m)} style={{ cursor:'pointer', padding:'6px 13px', borderRadius:'var(--radius-pill)', fontFamily:'var(--font-sans)', fontSize:12.5, fontWeight:600, border:'1px solid ' + (marca===m ? 'var(--ink-600)' : 'var(--border)'), background: marca===m ? 'var(--ink-600)' : 'transparent', color: marca===m ? 'var(--paper-50)' : 'var(--text-muted)' }}>{m}</button>
+          ))}
+        </div>
       </div>
 
       {/* results */}
       <div style={{ maxWidth:'var(--container)', margin:'0 auto', padding:'var(--space-7) var(--gutter) var(--space-9)' }}>
-        <div style={{ fontFamily:'var(--font-sans)', fontSize:14, color:'var(--text-muted)', marginBottom:24 }}>{filtered.length} produto{filtered.length!==1?'s':''}{cat!=='Todos' ? ' · ' + cat : ''}{q ? ' · "' + q + '"' : ''}</div>
-        {byMarca.length === 0 && <div style={{ padding:'60px 0', textAlign:'center', color:'var(--text-muted)', fontFamily:'var(--font-sans)' }}>Nenhum produto encontrado.</div>}
+        <div style={{ fontFamily:'var(--font-sans)', fontSize:14, color:'var(--text-muted)', marginBottom:24 }}>{filtered.length} produto{filtered.length!==1?'s':''}{cat!=='Todos' ? ' · ' + cat : ''}{marca!=='Todas' ? ' · ' + marca : ''}{q ? ' · "' + q + '"' : ''}</div>
+        {byMarca.length === 0 && (
+          <div style={{ padding:'70px 20px', textAlign:'center' }}>
+            <div style={{ fontFamily:'var(--font-serif)', fontSize:'var(--text-lg)', fontWeight:600, color:'var(--text-primary)' }}>Nenhum produto encontrado</div>
+            <p style={{ fontFamily:'var(--font-sans)', fontSize:14, color:'var(--text-secondary)', margin:'8px 0 20px' }}>Tente outra combinação de filtros ou limpe a busca.</p>
+            <Button variant="outline" size="sm" onClick={() => { setQ(''); setCat('Todos'); setMarca('Todas'); }}>Limpar filtros</Button>
+          </div>
+        )}
         {byMarca.map(([marca, items]) => (
           <section key={marca} style={{ marginBottom:'var(--space-8)' }}>
             <div style={{ display:'flex', alignItems:'center', gap:14, marginBottom:22 }}>

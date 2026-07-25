@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"DistribuidoraHorseDesignSystem_1d44b3","components":[{"name":"Eyebrow","sourcePath":"components/brand/Eyebrow.jsx"},{"name":"Logo","sourcePath":"components/brand/Logo.jsx"},{"name":"ProductCard","sourcePath":"components/commerce/ProductCard.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Stat","sourcePath":"components/core/Stat.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"}],"sourceHashes":{"components/brand/Eyebrow.jsx":"fc5668cc71e5","components/brand/Logo.jsx":"16a71ad59650","components/commerce/ProductCard.jsx":"4c5769280870","components/core/Badge.jsx":"f7443ba10933","components/core/Button.jsx":"4bb17e810897","components/core/Card.jsx":"0787977b476f","components/core/IconButton.jsx":"bfad6797a853","components/core/Stat.jsx":"c71fcce505c3","components/forms/Checkbox.jsx":"0a0f41f6c0fb","components/forms/Input.jsx":"aaa9999a5f93","components/forms/Select.jsx":"5751fe508861","import_github/about-screen.js":"2be867092e5c","import_github/catalog-screen.js":"687cca483471","import_github/contact-screen.js":"2042ecd80ffb","import_github/footer.js":"365c967df808","import_github/header.js":"8f2f941a38ba","import_github/home-screen.js":"0ce2346fc295","import_github/products.js":"80b0a23f7a23","import_github/shared.js":"7fd97c310fa1","ui_kits/site/AboutScreen.jsx":"719dd56bedad","ui_kits/site/CatalogScreen.jsx":"687cca483471","ui_kits/site/ContactScreen.jsx":"2042ecd80ffb","ui_kits/site/Footer.jsx":"0b282f16e645","ui_kits/site/Header.jsx":"f0549f9a84bc","ui_kits/site/HomeScreen.jsx":"d0cf6097b3d7","ui_kits/site/products.js":"4e535d6570b4"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":4,"namespace":"DistribuidoraHorseDesignSystem_1d44b3","components":[{"name":"Eyebrow","sourcePath":"components/brand/Eyebrow.jsx"},{"name":"Logo","sourcePath":"components/brand/Logo.jsx"},{"name":"ProductCard","sourcePath":"components/commerce/ProductCard.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Stat","sourcePath":"components/core/Stat.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"}],"sourceHashes":{"components/brand/Eyebrow.jsx":"fc5668cc71e5","components/brand/Logo.jsx":"16a71ad59650","components/commerce/ProductCard.jsx":"4c5769280870","components/core/Badge.jsx":"f7443ba10933","components/core/Button.jsx":"4bb17e810897","components/core/Card.jsx":"0787977b476f","components/core/IconButton.jsx":"bfad6797a853","components/core/Stat.jsx":"c71fcce505c3","components/forms/Checkbox.jsx":"0a0f41f6c0fb","components/forms/Input.jsx":"aaa9999a5f93","components/forms/Select.jsx":"5751fe508861","import_github/about-screen.js":"2be867092e5c","import_github/catalog-screen.js":"d806c59b2d94","import_github/contact-screen.js":"2042ecd80ffb","import_github/footer.js":"365c967df808","import_github/header.js":"8f2f941a38ba","import_github/home-screen.js":"9c22db9c5ec6","import_github/products.js":"f358f5a6e6fe","import_github/shared.js":"7fd97c310fa1","ui_kits/site/AboutScreen.jsx":"719dd56bedad","ui_kits/site/CatalogScreen.jsx":"d806c59b2d94","ui_kits/site/ContactScreen.jsx":"2042ecd80ffb","ui_kits/site/Footer.jsx":"0b282f16e645","ui_kits/site/Header.jsx":"f0549f9a84bc","ui_kits/site/HomeScreen.jsx":"d0ce3dbaeb23","ui_kits/site/products.js":"4a01bff0c84e"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -1081,7 +1081,7 @@ const {
 } = window.DistribuidoraHorseDesignSystem_1d44b3;
 const ALL_PRODUCTS = () => window.HORSE_PRODUCTS || [];
 const CATEGORIAS = ['Saúde', 'Nutrição', 'Performance', 'Higiene', 'Pesca'];
-const MARCAS_FILTRO = ['Syntec', 'Organnact', 'Calbos', 'Central Vet', 'Heel', 'Papa Mosca', 'Lambari'];
+const MARCAS_FILTRO = ['Syntec', 'Organnact', 'Calbos', 'Central Vet', 'Heel', 'J.A. Ambiental', 'Lambari'];
 function FilterGroup({
   title,
   children
@@ -1332,7 +1332,7 @@ function CatalogScreen() {
       color: 'var(--text-secondary)',
       marginTop: 4
     }
-  }, "Mais de 120 produtos de Syntec, Organnact, Calbos, Central Vet, Heel, Papa Mosca e Lambari.")), /*#__PURE__*/React.createElement(Button, {
+  }, "Mais de 120 produtos de Syntec, Organnact, Calbos, Central Vet, Heel, J.A. Ambiental e Lambari.")), /*#__PURE__*/React.createElement(Button, {
     variant: "accent",
     iconRight: /*#__PURE__*/React.createElement(Icon, {
       name: "ArrowRight",
@@ -2239,10 +2239,13 @@ function Featured({
       fontSize: 13,
       color: 'var(--text-muted)'
     }
-  }, "Mais de 120 produtos \xB7 Syntec, Organnact, Calbos, Central Vet, Heel, Papa Mosca e Lambari")));
+  }, "Mais de 120 produtos \xB7 Syntec, Organnact, Calbos, Central Vet, Heel, J.A. Ambiental e Lambari")));
 }
 function Brands() {
-  const names = ['SYNTEC', 'ORGANNACT', 'CALBOS', 'CENTRAL VET', 'PAPA MOSCA', 'HEEL', 'LAMBARI'];
+  const names = [['Syntec', 'SYNTEC'], ['Organnact', 'ORGANNACT'], ['Calbos', 'CALBOS'], ['Central Vet', 'CENTRAL VET'], ['Heel', 'HEEL'], ['J.A. Ambiental', 'J.A. AMBIENTAL'], ['Lambari', 'LAMBARI']];
+  const abrir = marca => {
+    window.location.href = 'catalogo-completo.html?marca=' + encodeURIComponent(marca);
+  };
   return /*#__PURE__*/React.createElement(Section, {
     bg: "var(--color-bg)",
     pad: "var(--space-7) var(--gutter)"
@@ -2261,19 +2264,34 @@ function Brands() {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      gap: 48,
+      gap: 40,
       flexWrap: 'wrap'
     }
-  }, names.map(n => /*#__PURE__*/React.createElement("span", {
-    key: n,
+  }, names.map(([marca, label]) => /*#__PURE__*/React.createElement("button", {
+    key: marca,
+    onClick: () => abrir(marca),
+    title: 'Ver produtos ' + marca,
     style: {
+      cursor: 'pointer',
+      background: 'none',
+      border: 'none',
+      padding: '6px 4px',
       fontFamily: 'var(--font-display)',
       fontSize: 20,
       letterSpacing: '0.08em',
       color: 'var(--ink-400)',
-      opacity: 0.7
+      opacity: 0.7,
+      transition: 'opacity var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out)'
+    },
+    onMouseEnter: e => {
+      e.currentTarget.style.opacity = 1;
+      e.currentTarget.style.color = 'var(--accent)';
+    },
+    onMouseLeave: e => {
+      e.currentTarget.style.opacity = 0.7;
+      e.currentTarget.style.color = 'var(--ink-400)';
     }
-  }, n))));
+  }, label))));
 }
 function CTA({
   setRoute
@@ -2370,7 +2388,7 @@ try { (() => {
   // ---------------- HEEL (homeopáticos veterinários) ----------------
   P('Heel', 'Engystol', 'Saúde', '5 ampolas de 1 ml', 'Medicamento homeopático injetável de uso parenteral para uso veterinário.'), P('Heel', 'Traumeel', 'Saúde', '50 comprimidos', 'Indicado para bovinos, equinos, asininos, ovinos, suínos, caninos e felinos.'), P('Heel', 'Zeel', 'Saúde', '5 ampolas de 5 ml', 'Solução injetável indicada para bovinos, equinos, suínos, ovinos, caprinos, caninos e felinos.'),
   // ---------------- PAPA MOSCA / J.A. AMBIENTAL ----------------
-  P('Papa Mosca', 'Papa Mosca', 'Higiene', '6 L', 'Atrativo biológico que combate as moscas de forma eficaz e sustentável, sem venenos ou inseticidas.'), P('Papa Mosca', 'Atrativo Natural Pet', 'Higiene', '2 L', 'Solução ecológica e definitiva contra as moscas.'), P('Papa Mosca', 'Papa Insetos', 'Higiene', '500 ml', 'Composição Methomyl 0,066% + surfactantes; controle de insetos.'), P('Papa Mosca', 'Armadilha de Tela', 'Higiene', 'unidade', 'Rede protetora e recipiente para captura de moscas.'), P('Papa Mosca', 'Armadilha Biológica', 'Higiene', 'unidade', 'Armadilha montada: funil, cuba, tampa, aranha, trava borboleta e haste.'), P('Papa Mosca', 'Ratoeira Injetável T-Rex', 'Higiene', 'unidade', 'Ratoeira injetada em polipropileno virgem, mola de alta pressão; resistente ao sol e chuva.', 'ratoeira-injetavel-t-rex'), P('Papa Mosca', 'Porta Iscas para Ratos', 'Higiene', 'unidade', 'Porta-iscas em polipropileno virgem com 4 funções de captura; ferro de fixação e chave universal.'),
+  P('J.A. Ambiental', 'Papa Mosca', 'Higiene', '6 L', 'Atrativo biológico que combate as moscas de forma eficaz e sustentável, sem venenos ou inseticidas.'), P('J.A. Ambiental', 'Atrativo Natural Pet', 'Higiene', '2 L', 'Solução ecológica e definitiva contra as moscas.'), P('J.A. Ambiental', 'Papa Insetos', 'Higiene', '500 ml', 'Composição Methomyl 0,066% + surfactantes; controle de insetos.'), P('J.A. Ambiental', 'Armadilha de Tela', 'Higiene', 'unidade', 'Rede protetora e recipiente para captura de moscas.'), P('J.A. Ambiental', 'Armadilha Biológica', 'Higiene', 'unidade', 'Armadilha montada: funil, cuba, tampa, aranha, trava borboleta e haste.'), P('J.A. Ambiental', 'Ratoeira Injetável T-Rex', 'Higiene', 'unidade', 'Ratoeira injetada em polipropileno virgem, mola de alta pressão; resistente ao sol e chuva.', 'ratoeira-injetavel-t-rex'), P('J.A. Ambiental', 'Porta Iscas para Ratos', 'Higiene', 'unidade', 'Porta-iscas em polipropileno virgem com 4 funções de captura; ferro de fixação e chave universal.'),
   // ---------------- LAMBARI (massas prontas para pesca) ----------------
   P('Lambari', 'Massa Pacu Goiaba', 'Pesca', '100 g', 'Massa pronta para pesca de pacu, sabor goiaba.', 'massa-pacu-goiaba'), P('Lambari', 'Massa Pacu Milho Verde', 'Pesca', '100 g', 'Massa pronta para pesca de pacu, sabor milho verde.', 'massa-pacu-milho-verde'), P('Lambari', 'Massa Pacu Queijo', 'Pesca', '100 g', 'Massa pronta para pesca de pacu, sabor queijo.', 'massa-pacu-queijo'), P('Lambari', 'Massa Pacu Sangue', 'Pesca', '100 g', 'Massa pronta para pesca de pacu, sabor sangue.', 'massa-pacu-sangue'), P('Lambari', 'Massa Piau Bichinho da Laranja', 'Pesca', '100 g', 'Massa pronta para pesca de piau, sabor bichinho da laranja.', 'massa-piau-bichinho-da-laranja'), P('Lambari', 'Massa Piau Milho Verde', 'Pesca', '100 g', 'Massa pronta para pesca de piau, sabor milho verde.', 'massa-piau-milho-verde'), P('Lambari', 'Massa Piau Queijo', 'Pesca', '100 g', 'Massa pronta para pesca de piau, sabor queijo.', 'massa-piau-queijo'), P('Lambari', 'Massa Piau Sangue', 'Pesca', '100 g', 'Massa pronta para pesca de piau, sabor sangue.', 'massa-piau-sangue'), P('Lambari', 'Massa Tilápia Bichinho da Laranja', 'Pesca', '100 g', 'Massa pronta para pesca de tilápia, sabor bichinho da laranja.', 'massa-tilapia-bichinho-da-laranja'), P('Lambari', 'Massa Tilápia Erva Doce', 'Pesca', '100 g', 'Massa pronta para pesca de tilápia, sabor erva doce.', 'massa-tilapia-erva-doce'), P('Lambari', 'Massa Tilápia Milho Verde', 'Pesca', '100 g', 'Massa pronta para pesca de tilápia, sabor milho verde.', 'massa-tilapia-milho-verde'), P('Lambari', 'Massa Tilápia P-40', 'Pesca', '100 g', 'Massa pronta para pesca de tilápia, isca P-40.', 'massa-tilapia-p-40'), P('Lambari', 'Massa Pronta para Pesca Natural', 'Pesca', '100 g', 'Massa pronta para pesca de lambari, sabor natural.', 'massa-pronta-para-pesca-natural'), P('Lambari', 'Massa Pronta para Pescar Milho Verde', 'Pesca', '100 g', 'Massa pronta para pesca de lambari, sabor milho verde.', 'massa-pronta-para-pescar-sabor-milho-verde'), P('Lambari', 'Massa Pronta para Pescar Queijo', 'Pesca', '100 g', 'Massa pronta para pesca de lambari, sabor queijo.', 'massa-pronta-para-pescar-sabor-queijo'), P('Lambari', 'Minhoca Pronta Carne Fina', 'Pesca', '100 g', 'Minhoca pronta para pesca, carne fina.', 'minhoca-pronta-carne-fina'),
   // ---------------- HORSE (marca própria) ----------------
@@ -2661,7 +2679,7 @@ const {
 } = window.DistribuidoraHorseDesignSystem_1d44b3;
 const ALL_PRODUCTS = () => window.HORSE_PRODUCTS || [];
 const CATEGORIAS = ['Saúde', 'Nutrição', 'Performance', 'Higiene', 'Pesca'];
-const MARCAS_FILTRO = ['Syntec', 'Organnact', 'Calbos', 'Central Vet', 'Heel', 'Papa Mosca', 'Lambari'];
+const MARCAS_FILTRO = ['Syntec', 'Organnact', 'Calbos', 'Central Vet', 'Heel', 'J.A. Ambiental', 'Lambari'];
 function FilterGroup({
   title,
   children
@@ -2912,7 +2930,7 @@ function CatalogScreen() {
       color: 'var(--text-secondary)',
       marginTop: 4
     }
-  }, "Mais de 120 produtos de Syntec, Organnact, Calbos, Central Vet, Heel, Papa Mosca e Lambari.")), /*#__PURE__*/React.createElement(Button, {
+  }, "Mais de 120 produtos de Syntec, Organnact, Calbos, Central Vet, Heel, J.A. Ambiental e Lambari.")), /*#__PURE__*/React.createElement(Button, {
     variant: "accent",
     iconRight: /*#__PURE__*/React.createElement(Icon, {
       name: "ArrowRight",
@@ -3819,10 +3837,13 @@ function Featured({
       fontSize: 13,
       color: 'var(--text-muted)'
     }
-  }, "Mais de 120 produtos \xB7 Syntec, Organnact, Calbos, Central Vet, Heel, Papa Mosca e Lambari")));
+  }, "Mais de 120 produtos \xB7 Syntec, Organnact, Calbos, Central Vet, Heel, J.A. Ambiental e Lambari")));
 }
 function Brands() {
-  const names = ['SYNTEC', 'ORGANNACT', 'CALBOS', 'CENTRAL VET', 'PAPA MOSCA', 'HEEL', 'LAMBARI'];
+  const names = [['Syntec', 'SYNTEC'], ['Organnact', 'ORGANNACT'], ['Calbos', 'CALBOS'], ['Central Vet', 'CENTRAL VET'], ['Heel', 'HEEL'], ['J.A. Ambiental', 'J.A. AMBIENTAL'], ['Lambari', 'LAMBARI']];
+  const abrir = marca => {
+    window.location.href = 'catalogo-completo.html?marca=' + encodeURIComponent(marca);
+  };
   return /*#__PURE__*/React.createElement(Section, {
     bg: "var(--color-bg)",
     pad: "var(--space-7) var(--gutter)"
@@ -3841,19 +3862,34 @@ function Brands() {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      gap: 48,
+      gap: 40,
       flexWrap: 'wrap'
     }
-  }, names.map(n => /*#__PURE__*/React.createElement("span", {
-    key: n,
+  }, names.map(([marca, label]) => /*#__PURE__*/React.createElement("button", {
+    key: marca,
+    onClick: () => abrir(marca),
+    title: 'Ver produtos ' + marca,
     style: {
+      cursor: 'pointer',
+      background: 'none',
+      border: 'none',
+      padding: '6px 4px',
       fontFamily: 'var(--font-display)',
       fontSize: 20,
       letterSpacing: '0.08em',
       color: 'var(--ink-400)',
-      opacity: 0.7
+      opacity: 0.7,
+      transition: 'opacity var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out)'
+    },
+    onMouseEnter: e => {
+      e.currentTarget.style.opacity = 1;
+      e.currentTarget.style.color = 'var(--accent)';
+    },
+    onMouseLeave: e => {
+      e.currentTarget.style.opacity = 0.7;
+      e.currentTarget.style.color = 'var(--ink-400)';
     }
-  }, n))));
+  }, label))));
 }
 function CTA({
   setRoute
@@ -3950,7 +3986,7 @@ try { (() => {
   // ---------------- HEEL (homeopáticos veterinários) ----------------
   P('Heel', 'Engystol', 'Saúde', '5 ampolas de 1 ml', 'Medicamento homeopático injetável de uso parenteral para uso veterinário.'), P('Heel', 'Traumeel', 'Saúde', '50 comprimidos', 'Indicado para bovinos, equinos, asininos, ovinos, suínos, caninos e felinos.'), P('Heel', 'Zeel', 'Saúde', '5 ampolas de 5 ml', 'Solução injetável indicada para bovinos, equinos, suínos, ovinos, caprinos, caninos e felinos.'),
   // ---------------- PAPA MOSCA / J.A. AMBIENTAL ----------------
-  P('Papa Mosca', 'Papa Mosca', 'Higiene', '6 L', 'Atrativo biológico que combate as moscas de forma eficaz e sustentável, sem venenos ou inseticidas.'), P('Papa Mosca', 'Atrativo Natural Pet', 'Higiene', '2 L', 'Solução ecológica e definitiva contra as moscas.'), P('Papa Mosca', 'Papa Insetos', 'Higiene', '500 ml', 'Composição Methomyl 0,066% + surfactantes; controle de insetos.'), P('Papa Mosca', 'Armadilha de Tela', 'Higiene', 'unidade', 'Rede protetora e recipiente para captura de moscas.'), P('Papa Mosca', 'Armadilha Biológica', 'Higiene', 'unidade', 'Armadilha montada: funil, cuba, tampa, aranha, trava borboleta e haste.'), P('Papa Mosca', 'Ratoeira Injetável T-Rex', 'Higiene', 'unidade', 'Ratoeira injetada em polipropileno virgem, mola de alta pressão; resistente ao sol e chuva.', 'ratoeira-injetavel-t-rex'), P('Papa Mosca', 'Porta Iscas para Ratos', 'Higiene', 'unidade', 'Porta-iscas em polipropileno virgem com 4 funções de captura; ferro de fixação e chave universal.'),
+  P('J.A. Ambiental', 'Papa Mosca', 'Higiene', '6 L', 'Atrativo biológico que combate as moscas de forma eficaz e sustentável, sem venenos ou inseticidas.'), P('J.A. Ambiental', 'Atrativo Natural Pet', 'Higiene', '2 L', 'Solução ecológica e definitiva contra as moscas.'), P('J.A. Ambiental', 'Papa Insetos', 'Higiene', '500 ml', 'Composição Methomyl 0,066% + surfactantes; controle de insetos.'), P('J.A. Ambiental', 'Armadilha de Tela', 'Higiene', 'unidade', 'Rede protetora e recipiente para captura de moscas.'), P('J.A. Ambiental', 'Armadilha Biológica', 'Higiene', 'unidade', 'Armadilha montada: funil, cuba, tampa, aranha, trava borboleta e haste.'), P('J.A. Ambiental', 'Ratoeira Injetável T-Rex', 'Higiene', 'unidade', 'Ratoeira injetada em polipropileno virgem, mola de alta pressão; resistente ao sol e chuva.', 'ratoeira-injetavel-t-rex'), P('J.A. Ambiental', 'Porta Iscas para Ratos', 'Higiene', 'unidade', 'Porta-iscas em polipropileno virgem com 4 funções de captura; ferro de fixação e chave universal.'),
   // ---------------- LAMBARI (massas prontas para pesca) ----------------
   P('Lambari', 'Massa Pacu Goiaba', 'Pesca', '100 g', 'Massa pronta para pesca de pacu, sabor goiaba.', 'massa-pacu-goiaba'), P('Lambari', 'Massa Pacu Milho Verde', 'Pesca', '100 g', 'Massa pronta para pesca de pacu, sabor milho verde.', 'massa-pacu-milho-verde'), P('Lambari', 'Massa Pacu Queijo', 'Pesca', '100 g', 'Massa pronta para pesca de pacu, sabor queijo.', 'massa-pacu-queijo'), P('Lambari', 'Massa Pacu Sangue', 'Pesca', '100 g', 'Massa pronta para pesca de pacu, sabor sangue.', 'massa-pacu-sangue'), P('Lambari', 'Massa Piau Bichinho da Laranja', 'Pesca', '100 g', 'Massa pronta para pesca de piau, sabor bichinho da laranja.', 'massa-piau-bichinho-da-laranja'), P('Lambari', 'Massa Piau Milho Verde', 'Pesca', '100 g', 'Massa pronta para pesca de piau, sabor milho verde.', 'massa-piau-milho-verde'), P('Lambari', 'Massa Piau Queijo', 'Pesca', '100 g', 'Massa pronta para pesca de piau, sabor queijo.', 'massa-piau-queijo'), P('Lambari', 'Massa Piau Sangue', 'Pesca', '100 g', 'Massa pronta para pesca de piau, sabor sangue.', 'massa-piau-sangue'), P('Lambari', 'Massa Tilápia Bichinho da Laranja', 'Pesca', '100 g', 'Massa pronta para pesca de tilápia, sabor bichinho da laranja.', 'massa-tilapia-bichinho-da-laranja'), P('Lambari', 'Massa Tilápia Erva Doce', 'Pesca', '100 g', 'Massa pronta para pesca de tilápia, sabor erva doce.', 'massa-tilapia-erva-doce'), P('Lambari', 'Massa Tilápia Milho Verde', 'Pesca', '100 g', 'Massa pronta para pesca de tilápia, sabor milho verde.', 'massa-tilapia-milho-verde'), P('Lambari', 'Massa Tilápia P-40', 'Pesca', '100 g', 'Massa pronta para pesca de tilápia, isca P-40.', 'massa-tilapia-p-40'), P('Lambari', 'Massa Pronta para Pesca Natural', 'Pesca', '100 g', 'Massa pronta para pesca de lambari, sabor natural.', 'massa-pronta-para-pesca-natural'), P('Lambari', 'Massa Pronta para Pescar Milho Verde', 'Pesca', '100 g', 'Massa pronta para pesca de lambari, sabor milho verde.', 'massa-pronta-para-pescar-sabor-milho-verde'), P('Lambari', 'Massa Pronta para Pescar Queijo', 'Pesca', '100 g', 'Massa pronta para pesca de lambari, sabor queijo.', 'massa-pronta-para-pescar-sabor-queijo'), P('Lambari', 'Minhoca Pronta Carne Fina', 'Pesca', '100 g', 'Minhoca pronta para pesca, carne fina.', 'minhoca-pronta-carne-fina'),
   // ---------------- HORSE (marca própria) ----------------
