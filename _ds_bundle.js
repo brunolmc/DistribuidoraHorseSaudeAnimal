@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"DistribuidoraHorseDesignSystem_1d44b3","components":[{"name":"Eyebrow","sourcePath":"components/brand/Eyebrow.jsx"},{"name":"Logo","sourcePath":"components/brand/Logo.jsx"},{"name":"ProductCard","sourcePath":"components/commerce/ProductCard.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Stat","sourcePath":"components/core/Stat.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"}],"sourceHashes":{"components/brand/Eyebrow.jsx":"fc5668cc71e5","components/brand/Logo.jsx":"16a71ad59650","components/commerce/ProductCard.jsx":"4c5769280870","components/core/Badge.jsx":"f7443ba10933","components/core/Button.jsx":"4bb17e810897","components/core/Card.jsx":"0787977b476f","components/core/IconButton.jsx":"bfad6797a853","components/core/Stat.jsx":"c71fcce505c3","components/forms/Checkbox.jsx":"0a0f41f6c0fb","components/forms/Input.jsx":"aaa9999a5f93","components/forms/Select.jsx":"5751fe508861","import_github/about-screen.js":"2be867092e5c","import_github/catalog-screen.js":"c2b1261c8e46","import_github/contact-screen.js":"2042ecd80ffb","import_github/footer.js":"365c967df808","import_github/header.js":"8f2f941a38ba","import_github/home-screen.js":"0ce2346fc295","import_github/products.js":"49d2281caa1f","import_github/shared.js":"7fd97c310fa1","ui_kits/site/AboutScreen.jsx":"719dd56bedad","ui_kits/site/CatalogScreen.jsx":"c2b1261c8e46","ui_kits/site/ContactScreen.jsx":"2042ecd80ffb","ui_kits/site/Footer.jsx":"0b282f16e645","ui_kits/site/Header.jsx":"f0549f9a84bc","ui_kits/site/HomeScreen.jsx":"d0cf6097b3d7","ui_kits/site/products.js":"a41ffecdbe62"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":4,"namespace":"DistribuidoraHorseDesignSystem_1d44b3","components":[{"name":"Eyebrow","sourcePath":"components/brand/Eyebrow.jsx"},{"name":"Logo","sourcePath":"components/brand/Logo.jsx"},{"name":"ProductCard","sourcePath":"components/commerce/ProductCard.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Stat","sourcePath":"components/core/Stat.jsx"},{"name":"Checkbox","sourcePath":"components/forms/Checkbox.jsx"},{"name":"Input","sourcePath":"components/forms/Input.jsx"},{"name":"Select","sourcePath":"components/forms/Select.jsx"}],"sourceHashes":{"components/brand/Eyebrow.jsx":"fc5668cc71e5","components/brand/Logo.jsx":"16a71ad59650","components/commerce/ProductCard.jsx":"4c5769280870","components/core/Badge.jsx":"f7443ba10933","components/core/Button.jsx":"4bb17e810897","components/core/Card.jsx":"0787977b476f","components/core/IconButton.jsx":"bfad6797a853","components/core/Stat.jsx":"c71fcce505c3","components/forms/Checkbox.jsx":"0a0f41f6c0fb","components/forms/Input.jsx":"aaa9999a5f93","components/forms/Select.jsx":"5751fe508861","import_github/about-screen.js":"2be867092e5c","import_github/catalog-screen.js":"687cca483471","import_github/contact-screen.js":"2042ecd80ffb","import_github/footer.js":"365c967df808","import_github/header.js":"8f2f941a38ba","import_github/home-screen.js":"0ce2346fc295","import_github/products.js":"80b0a23f7a23","import_github/shared.js":"7fd97c310fa1","ui_kits/site/AboutScreen.jsx":"719dd56bedad","ui_kits/site/CatalogScreen.jsx":"687cca483471","ui_kits/site/ContactScreen.jsx":"2042ecd80ffb","ui_kits/site/Footer.jsx":"0b282f16e645","ui_kits/site/Header.jsx":"f0549f9a84bc","ui_kits/site/HomeScreen.jsx":"d0cf6097b3d7","ui_kits/site/products.js":"4e535d6570b4"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -1079,8 +1079,9 @@ const {
   ProductCard,
   Eyebrow
 } = window.DistribuidoraHorseDesignSystem_1d44b3;
-const PICKC = name => (window.HORSE_PRODUCTS || []).find(p => p.name === name) || {};
-const CATALOG = ['Muscle Horse', 'Creatina 90 Syntec', 'Vitapulmin Gel', 'Nutrifull Equi', 'Calfoz', 'Relax Ice', 'Gastroequi', 'Hipofen', 'Kit Pré-Prova (ATP / D-Nitrox / Turbo)'].map(PICKC);
+const ALL_PRODUCTS = () => window.HORSE_PRODUCTS || [];
+const CATEGORIAS = ['Saúde', 'Nutrição', 'Performance', 'Higiene', 'Pesca'];
+const MARCAS_FILTRO = ['Syntec', 'Organnact', 'Calbos', 'Central Vet', 'Heel', 'Papa Mosca', 'Lambari'];
 function FilterGroup({
   title,
   children
@@ -1110,6 +1111,28 @@ function FilterGroup({
 }
 function CatalogScreen() {
   const isMobile = useIsMobile();
+  const [q, setQ] = useState('');
+  const [cats, setCats] = useState([]);
+  const [marcas, setMarcas] = useState([]);
+  const [ordem, setOrdem] = useState('relevancia');
+  const toggle = (list, setList) => value => {
+    setList(list.includes(value) ? list.filter(v => v !== value) : list.concat(value));
+  };
+  const limpar = () => {
+    setQ('');
+    setCats([]);
+    setMarcas([]);
+    setOrdem('relevancia');
+  };
+  const filtrados = React.useMemo(() => {
+    const t = q.trim().toLowerCase();
+    let out = ALL_PRODUCTS().filter(p => (cats.length === 0 || cats.includes(p.category)) && (marcas.length === 0 || marcas.includes(p.marca)) && (!t || p.name.toLowerCase().includes(t) || p.marca.toLowerCase().includes(t) || (p.desc || '').toLowerCase().includes(t)));
+    if (ordem === 'nome') out = out.slice().sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+    if (ordem === 'marca') out = out.slice().sort((a, b) => a.marca.localeCompare(b.marca, 'pt-BR') || a.name.localeCompare(b.name, 'pt-BR'));
+    return out;
+  }, [q, cats, marcas, ordem]);
+  const visiveis = filtrados.slice(0, 12);
+  const temFiltro = q || cats.length || marcas.length;
   const goFull = () => {
     window.location.href = 'catalogo-completo.html';
   };
@@ -1149,7 +1172,7 @@ function CatalogScreen() {
       color: 'var(--text-secondary)',
       margin: 0
     }
-  }, "Uma amostra do portf\xF3lio \xB7 sa\xFAde, nutri\xE7\xE3o, performance e higiene")), /*#__PURE__*/React.createElement(Button, {
+  }, "Uma amostra do portf\xF3lio: sa\xFAde, nutri\xE7\xE3o, performance e higiene")), /*#__PURE__*/React.createElement(Button, {
     variant: "accent",
     iconRight: /*#__PURE__*/React.createElement(Icon, {
       name: "ArrowRight",
@@ -1182,41 +1205,29 @@ function CatalogScreen() {
     iconLeft: /*#__PURE__*/React.createElement(Icon, {
       name: "Search",
       size: 18
-    })
+    }),
+    value: q,
+    onChange: e => setQ(e.target.value)
   })), /*#__PURE__*/React.createElement(FilterGroup, {
     title: "Categoria"
-  }, /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Sa\xFAde",
-    defaultChecked: true
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Nutri\xE7\xE3o",
-    defaultChecked: true
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Performance",
-    defaultChecked: true
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Higiene"
-  })), /*#__PURE__*/React.createElement(FilterGroup, {
+  }, CATEGORIAS.map(c => /*#__PURE__*/React.createElement(Checkbox, {
+    key: c,
+    label: c,
+    checked: cats.includes(c),
+    onChange: () => toggle(cats, setCats)(c)
+  }))), /*#__PURE__*/React.createElement(FilterGroup, {
     title: "Marca"
-  }, /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Syntec"
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Organnact"
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Calbos"
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Central Vet"
-  })), /*#__PURE__*/React.createElement(FilterGroup, {
-    title: "Disponibilidade"
-  }, /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Em estoque",
-    defaultChecked: true
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Pronta entrega"
-  })), /*#__PURE__*/React.createElement(Button, {
+  }, MARCAS_FILTRO.map(m => /*#__PURE__*/React.createElement(Checkbox, {
+    key: m,
+    label: m,
+    checked: marcas.includes(m),
+    onChange: () => toggle(marcas, setMarcas)(m)
+  }))), /*#__PURE__*/React.createElement(Button, {
     variant: "ghost",
     size: "sm",
-    block: true
+    block: true,
+    onClick: limpar,
+    disabled: !temFiltro
   }, "Limpar filtros")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
@@ -1228,32 +1239,60 @@ function CatalogScreen() {
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      display: 'flex',
-      gap: 8,
-      flexWrap: 'wrap'
+      fontFamily: 'var(--font-sans)',
+      fontSize: 14,
+      color: 'var(--text-muted)'
     }
-  }, /*#__PURE__*/React.createElement(Badge, {
-    tone: "health",
-    dot: true
-  }, "Sa\xFAde"), /*#__PURE__*/React.createElement(Badge, {
-    tone: "neutral",
-    dot: true
-  }, "Nutri\xE7\xE3o"), /*#__PURE__*/React.createElement(Badge, {
-    tone: "performance",
-    dot: true
-  }, "Performance")), /*#__PURE__*/React.createElement("div", {
+  }, filtrados.length, " produto", filtrados.length !== 1 ? 's' : '', filtrados.length > visiveis.length ? ' · mostrando ' + visiveis.length : ''), /*#__PURE__*/React.createElement("div", {
     style: {
-      width: 200
+      width: 210
     }
   }, /*#__PURE__*/React.createElement(Select, {
-    options: ['Ordenar: relevância', 'Nome A–Z', 'Marca']
-  }))), /*#__PURE__*/React.createElement("div", {
+    value: ordem,
+    onChange: e => setOrdem(e.target.value),
+    options: [{
+      value: 'relevancia',
+      label: 'Ordenar: relevância'
+    }, {
+      value: 'nome',
+      label: 'Nome A–Z'
+    }, {
+      value: 'marca',
+      label: 'Marca'
+    }]
+  }))), visiveis.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '70px 20px',
+      textAlign: 'center',
+      background: 'var(--color-surface)',
+      border: '1px solid var(--border)',
+      borderRadius: 'var(--radius-lg)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--font-serif)',
+      fontSize: 'var(--text-lg)',
+      fontWeight: 600,
+      color: 'var(--text-primary)'
+    }
+  }, "Nenhum produto encontrado"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: 'var(--font-sans)',
+      fontSize: 14,
+      color: 'var(--text-secondary)',
+      margin: '8px 0 20px'
+    }
+  }, "Tente outra combina\xE7\xE3o de filtros ou limpe a busca."), /*#__PURE__*/React.createElement(Button, {
+    variant: "outline",
+    size: "sm",
+    onClick: limpar
+  }, "Limpar filtros")) : /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(3,1fr)',
       gap: isMobile ? 12 : 20
     }
-  }, CATALOG.map(p => /*#__PURE__*/React.createElement(ProductCard, {
+  }, visiveis.map(p => /*#__PURE__*/React.createElement(ProductCard, {
     key: p.name,
     brand: p.marca,
     name: p.name,
@@ -2620,8 +2659,9 @@ const {
   ProductCard,
   Eyebrow
 } = window.DistribuidoraHorseDesignSystem_1d44b3;
-const PICKC = name => (window.HORSE_PRODUCTS || []).find(p => p.name === name) || {};
-const CATALOG = ['Muscle Horse', 'Creatina 90 Syntec', 'Vitapulmin Gel', 'Nutrifull Equi', 'Calfoz', 'Relax Ice', 'Gastroequi', 'Hipofen', 'Kit Pré-Prova (ATP / D-Nitrox / Turbo)'].map(PICKC);
+const ALL_PRODUCTS = () => window.HORSE_PRODUCTS || [];
+const CATEGORIAS = ['Saúde', 'Nutrição', 'Performance', 'Higiene', 'Pesca'];
+const MARCAS_FILTRO = ['Syntec', 'Organnact', 'Calbos', 'Central Vet', 'Heel', 'Papa Mosca', 'Lambari'];
 function FilterGroup({
   title,
   children
@@ -2651,6 +2691,28 @@ function FilterGroup({
 }
 function CatalogScreen() {
   const isMobile = useIsMobile();
+  const [q, setQ] = useState('');
+  const [cats, setCats] = useState([]);
+  const [marcas, setMarcas] = useState([]);
+  const [ordem, setOrdem] = useState('relevancia');
+  const toggle = (list, setList) => value => {
+    setList(list.includes(value) ? list.filter(v => v !== value) : list.concat(value));
+  };
+  const limpar = () => {
+    setQ('');
+    setCats([]);
+    setMarcas([]);
+    setOrdem('relevancia');
+  };
+  const filtrados = React.useMemo(() => {
+    const t = q.trim().toLowerCase();
+    let out = ALL_PRODUCTS().filter(p => (cats.length === 0 || cats.includes(p.category)) && (marcas.length === 0 || marcas.includes(p.marca)) && (!t || p.name.toLowerCase().includes(t) || p.marca.toLowerCase().includes(t) || (p.desc || '').toLowerCase().includes(t)));
+    if (ordem === 'nome') out = out.slice().sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+    if (ordem === 'marca') out = out.slice().sort((a, b) => a.marca.localeCompare(b.marca, 'pt-BR') || a.name.localeCompare(b.name, 'pt-BR'));
+    return out;
+  }, [q, cats, marcas, ordem]);
+  const visiveis = filtrados.slice(0, 12);
+  const temFiltro = q || cats.length || marcas.length;
   const goFull = () => {
     window.location.href = 'catalogo-completo.html';
   };
@@ -2690,7 +2752,7 @@ function CatalogScreen() {
       color: 'var(--text-secondary)',
       margin: 0
     }
-  }, "Uma amostra do portf\xF3lio \xB7 sa\xFAde, nutri\xE7\xE3o, performance e higiene")), /*#__PURE__*/React.createElement(Button, {
+  }, "Uma amostra do portf\xF3lio: sa\xFAde, nutri\xE7\xE3o, performance e higiene")), /*#__PURE__*/React.createElement(Button, {
     variant: "accent",
     iconRight: /*#__PURE__*/React.createElement(Icon, {
       name: "ArrowRight",
@@ -2723,41 +2785,29 @@ function CatalogScreen() {
     iconLeft: /*#__PURE__*/React.createElement(Icon, {
       name: "Search",
       size: 18
-    })
+    }),
+    value: q,
+    onChange: e => setQ(e.target.value)
   })), /*#__PURE__*/React.createElement(FilterGroup, {
     title: "Categoria"
-  }, /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Sa\xFAde",
-    defaultChecked: true
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Nutri\xE7\xE3o",
-    defaultChecked: true
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Performance",
-    defaultChecked: true
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Higiene"
-  })), /*#__PURE__*/React.createElement(FilterGroup, {
+  }, CATEGORIAS.map(c => /*#__PURE__*/React.createElement(Checkbox, {
+    key: c,
+    label: c,
+    checked: cats.includes(c),
+    onChange: () => toggle(cats, setCats)(c)
+  }))), /*#__PURE__*/React.createElement(FilterGroup, {
     title: "Marca"
-  }, /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Syntec"
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Organnact"
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Calbos"
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Central Vet"
-  })), /*#__PURE__*/React.createElement(FilterGroup, {
-    title: "Disponibilidade"
-  }, /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Em estoque",
-    defaultChecked: true
-  }), /*#__PURE__*/React.createElement(Checkbox, {
-    label: "Pronta entrega"
-  })), /*#__PURE__*/React.createElement(Button, {
+  }, MARCAS_FILTRO.map(m => /*#__PURE__*/React.createElement(Checkbox, {
+    key: m,
+    label: m,
+    checked: marcas.includes(m),
+    onChange: () => toggle(marcas, setMarcas)(m)
+  }))), /*#__PURE__*/React.createElement(Button, {
     variant: "ghost",
     size: "sm",
-    block: true
+    block: true,
+    onClick: limpar,
+    disabled: !temFiltro
   }, "Limpar filtros")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
@@ -2769,32 +2819,60 @@ function CatalogScreen() {
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      display: 'flex',
-      gap: 8,
-      flexWrap: 'wrap'
+      fontFamily: 'var(--font-sans)',
+      fontSize: 14,
+      color: 'var(--text-muted)'
     }
-  }, /*#__PURE__*/React.createElement(Badge, {
-    tone: "health",
-    dot: true
-  }, "Sa\xFAde"), /*#__PURE__*/React.createElement(Badge, {
-    tone: "neutral",
-    dot: true
-  }, "Nutri\xE7\xE3o"), /*#__PURE__*/React.createElement(Badge, {
-    tone: "performance",
-    dot: true
-  }, "Performance")), /*#__PURE__*/React.createElement("div", {
+  }, filtrados.length, " produto", filtrados.length !== 1 ? 's' : '', filtrados.length > visiveis.length ? ' · mostrando ' + visiveis.length : ''), /*#__PURE__*/React.createElement("div", {
     style: {
-      width: 200
+      width: 210
     }
   }, /*#__PURE__*/React.createElement(Select, {
-    options: ['Ordenar: relevância', 'Nome A–Z', 'Marca']
-  }))), /*#__PURE__*/React.createElement("div", {
+    value: ordem,
+    onChange: e => setOrdem(e.target.value),
+    options: [{
+      value: 'relevancia',
+      label: 'Ordenar: relevância'
+    }, {
+      value: 'nome',
+      label: 'Nome A–Z'
+    }, {
+      value: 'marca',
+      label: 'Marca'
+    }]
+  }))), visiveis.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: '70px 20px',
+      textAlign: 'center',
+      background: 'var(--color-surface)',
+      border: '1px solid var(--border)',
+      borderRadius: 'var(--radius-lg)'
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: 'var(--font-serif)',
+      fontSize: 'var(--text-lg)',
+      fontWeight: 600,
+      color: 'var(--text-primary)'
+    }
+  }, "Nenhum produto encontrado"), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontFamily: 'var(--font-sans)',
+      fontSize: 14,
+      color: 'var(--text-secondary)',
+      margin: '8px 0 20px'
+    }
+  }, "Tente outra combina\xE7\xE3o de filtros ou limpe a busca."), /*#__PURE__*/React.createElement(Button, {
+    variant: "outline",
+    size: "sm",
+    onClick: limpar
+  }, "Limpar filtros")) : /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'grid',
       gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(3,1fr)',
       gap: isMobile ? 12 : 20
     }
-  }, CATALOG.map(p => /*#__PURE__*/React.createElement(ProductCard, {
+  }, visiveis.map(p => /*#__PURE__*/React.createElement(ProductCard, {
     key: p.name,
     brand: p.marca,
     name: p.name,

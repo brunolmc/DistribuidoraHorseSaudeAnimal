@@ -8,7 +8,10 @@
 
   const P = (marca, name, category, size, desc, img) => {
     const tone = category === 'Saúde' ? 'health' : category === 'Performance' ? 'performance' : 'neutral';
-    return { marca, name, category, tone, size, desc, image: './assets/produtos/' + (img || slug(name)) + '.webp' };
+    return {
+      marca, name, category, tone, size, desc,
+      image: './assets/produtos/' + (img || slug(name)) + '.webp',
+    };
   };
 
   window.HORSE_PRODUCTS = [
