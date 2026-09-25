@@ -149,6 +149,11 @@
     P('Lambari', 'Massa Pronta para Pescar Queijo', 'Pesca', '100 g', 'Massa pronta para pesca de lambari, sabor queijo.', 'massa-pronta-para-pescar-sabor-queijo'),
     P('Lambari', 'Minhoca Pronta Carne Fina', 'Pesca', '100 g', 'Minhoca pronta para pesca, carne fina.', 'minhoca-pronta-carne-fina'),
 
+    // ---------------- Itens presentes no catálogo de pedidos (catalogoplace) ----------------
+    Object.assign(P('Organnact', 'Perfect Form', 'Nutrição', 'unidade', 'Suplemento Organnact para manutenção da forma e condição corporal do equino.'), { image: 'https://barber-ai.nyc3.cdn.digitaloceanspaces.com/Distribuidora%20Horse%20Sa%C3%BAde/1785932244195_PERFECT%20(1).webp' }),
+    Object.assign(P('Salpet', 'Atadura Salpet', 'Saúde', '10 e 15 cm × 4,5 m', 'Atadura elástica para proteção e estabilização, nas cores amarela e laranja.'), { image: 'https://barber-ai.nyc3.cdn.digitaloceanspaces.com/Distribuidora%20Horse%20Sa%C3%BAde/1787670439372_atadura%20amarela%2015%20cm.webp' }),
+    Object.assign(P('Central Vet', 'Atadura Preta', 'Saúde', 'unidade', 'Atadura elástica na cor preta para proteção e estabilização.'), { image: 'https://barber-ai.nyc3.cdn.digitaloceanspaces.com/Distribuidora%20Horse%20Sa%C3%BAde/1782483416223_Imagem19.webp' }),
+
     // ---------------- HORSE (marca própria) ----------------
     P('Horse', 'Escova para Animal', 'Higiene', 'unidade', 'Escova para cavalos; ferramenta certa para manter a pelagem limpa e saudável.'),
   ];
